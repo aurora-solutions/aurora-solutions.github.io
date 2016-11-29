@@ -1,0 +1,163 @@
+#repos {
+    .mdl-grid {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .mdl-card {
+        border: 1px solid $color-grey-light;
+    }
+    .mdl-card:hover {
+        border: 1px solid lighten($color-grey-600, 10%);
+        cursor: pointer;
+        box-shadow: 0 1px 4px lighten($color-grey-medium-light, 10%);
+        z-index: 50;
+        transition: all 150ms ease-in-out;
+    }
+    // SEARCH BAR
+    .md-autocomplete {
+        border-radius: 2px;
+        display: block;
+        height: $search-bar-height;
+        position: relative;
+        overflow: visible;
+        min-width: 190px;
+        width: 100%;
+        margin: 10px;
+        background: white;
+        .md-autocomplete-wrap {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            box-sizing: border-box;
+            position: relative;
+            overflow: visible;
+            height: $search-bar-height;
+        }
+        .md-autocomplete-wrap {
+            input,
+            md-input-container {
+                -webkit-box-flex: 1;
+                -webkit-flex: 1 1 0%;
+                flex: 1 1 0%;
+                box-sizing: border-box;
+                min-width: 0px;
+            }
+        }
+        input:not(.md-input) {
+            font-size: 14px;
+            box-sizing: border-box;
+            border: none;
+            box-shadow: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            padding: 0 15px;
+            line-height: $search-bar-height;
+            height: $search-bar-height;
+        }
+        .material-icons {
+            line-height: $search-bar-height;
+            padding-right: 5px;
+        }
+        button {
+            height: $search-bar-height;
+            min-width: $search-bar-height;
+            padding: 0;
+            .material-icons {
+                line-height: 35px;
+            }
+        }
+    }
+    md-content {
+        display: block;
+        position: relative;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        color: rgba(0, 0, 0, 0.87);
+        background-color: rgb(250, 250, 250);
+    }
+    input[type=search] {
+        -webkit-appearance: textfield;
+        box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+    }
+    .repo-card {
+        //*************************************/
+        // CARDS
+        //*************************************/
+        .repo-link {
+            text-decoration: none;
+        }
+        .mdl-card__media {
+            padding: 16px 16px 0;
+            background-color: white;
+        }
+        .mdl-card__media.mdl-typography--text-right {
+            padding-top: 0;
+        }
+        .mdl-list {
+            margin: 0;
+            padding: 0;
+        }
+        .mdl-list__item-avatar {
+            border-radius: 0;
+            background-color: white;
+        }
+        .mdl-card__title-text {
+            font-size: 20px;
+            word-break: break-all;
+        }
+        .mdl-card__supporting-text {
+            height: 75px;
+            p {
+                word-break: break-all;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        .mdl-card__subtitle-text {
+            padding-left: 16px;
+            margin: 0;
+        }
+        .mdl-card__actions {
+            font-size: 16px;
+            line-height: normal;
+            width: 100%;
+            background-color: rgb(247, 247, 247);
+            padding: 0;
+            box-sizing: border-box;
+            margin-top: 16px;
+        }
+        .metrics-list li {
+            font-size: 13px;
+        }
+        .mdl-list__item-icon.material-icons {
+            height: 16px;
+            width: 16px;
+            font-size: 16px;
+            box-sizing: border-box;
+            color: $color-grey-600;
+        }
+        .metrics-list {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            li {
+                display: inline-flex;
+                flex-direction: column;
+                padding: 0;
+                width: 33%;
+                .mdl-list__item-primary-content {
+                    outline: none;
+                }
+                .mdl-list__item-primary-content .mdl-list__item-icon {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

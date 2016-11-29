@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="showcase">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Zain Zafar">
+    <title>Aurora Showcase</title>
+    <style>
+        .no-js #loader {
+            display: none;
+        }
+        
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+        
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(assets/img/loader/loader.gif) center no-repeat #fff;
+        }
+    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/libs/material-lite/material-lite.min.css" />
+    <!--FONTS-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link href="dist/assets/css/styles.min.css" rel="stylesheet">
+    <script>
+        // Google Analytics Script
+    </script>
+    <!--JS-->
+    <script src="assets/libs/angular/angular.min.js"></script>
+</head>
+
+<body ng-controller="homeController">
+    <!-- Paste this code after body tag -->
+    <div class="se-pre-con"></div>
+    <div class="header-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+        <!--APP-NAVBAR -->
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <img class="showcase-logo" src="assets/img/logo-white.png" alt="Aurora Solutions Logo" width="30">
+                <span class="mdl-typography--headline title-light">AURORA SOLUTIONS</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation mdl-cell--hide-tablet mdl-cell--hide-phone">
+                    <a class="mdl-navigation__link page-scroll" href="#repos">Repos</a>
+                    <a class="mdl-navigation__link page-scroll" href="#organizations">Organizations</a>
+                </nav>
+            </div>
+        </header>
+        <div class="header-ribbon"></div>
+        <main class="header-main mdl-layout__content">
+            <div class="page-content">
+                <div class="header-container mdl-grid">
+                    <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                    <div class="mdl-cell mdl-cell--10-col">
+                        <!--HOME BANNER-->
+                        <div class="header-content mdl-color--white mdl-shadow--1dp content mdl-typography--text-center mdl-color-text--grey-800">
+                            <a href="https://github.com/aurora-solutions" target="_blank" role="button" title="Aurora Solutions GitHub">
+                                <img src="assets/img/github.png" alt="Github Aurora" width="35">
+                            </a>
+                            <h3 class="title-light">Our contribution to the open source community</h3>
+                            <p>
+                                WE LOVE <strong> OPEN SOURCE</strong>
+                            </p>
+                        </div>
+                        <!--REPOS-->
+                        <div id="repos">
+                            <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast"> Repos</div>
+                            <p class="mdl-typography--font-light">
+                                All of our open source repositories that our developers have worked on and are ready to be shared with rest of community
+                            </p>
+                            <!--<div class="mdl-grid" *ngIf="repos">-->
+                            <div class="mdl-grid">
+                                <div class="md-autocomplete">
+                                    <div class="mdl-shadow--2dp md-autocomplete-wrap">
+                                        <i class="material-icons" style="padding: 0 10px;color: #888;">search</i>
+                                        <input type="search" placeholder="Search repositories..." ng-model="query">
+                                        <!-- Right aligned menu below button -->
+                                        <button id="menu-lower-right" class="mdl-button mdl-js-button">
+											<i class="material-icons">sort</i>
+										</button>
+                                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="menu-lower-right">
+                                            <li class="mdl-menu__item" ng-click="sortOrder='owner.login'" ng-disabled="sortOrder=='owner.login'">Organization</li>
+                                            <li class="mdl-menu__item" ng-click="sortOrder='name'" ng-disabled="sortOrder=='name'">Name</li>
+                                            <li class="mdl-menu__item" ng-click="sortOrder='-stargazers_count'" ng-disabled="sortOrder=='-stargazers_count'">Popularity</li>
+                                            <li class="mdl-menu__item" ng-click="sortOrder='-size'" ng-disabled="sortOrder=='-size'">Size</li>
+                                        </ul>
+                                        <button class=" mdl-button mdl-js-button " ng-click="list_view=! list_view ">
+											<i class="material-icons ">{{(list_view?'view_list':'apps')}}</i>
+										</button>
+                                    </div>
+                                    <!-- Loading Bar -->
+                                    <div ng-if="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate mdl-cell--12-col"></div>
+                                </div>
+                                <div ng-repeat="repo in repos | filter:query | orderBy: sortOrder" ng-class="{'mdl-cell--12-col-desktop':list_view}" class="mdl-card mdl-cell--middle mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone ">
+                                    <!--CARD-->
+                                    <a [attr.href]="repo.html_url" target="_blank" class="repo-link repo-card">
+                                        <ul class="mdl-list">
+                                            <li class="mdl-list__item mdl-list__item--two-line">
+                                                <span class="mdl-list__item-primary-content">
+													<img class=" mdl-list__item-avatar" src="{{repo.owner.avatar_url || 'assets/img/github.png'}}" width="50" alt="Project Logo">
+													<h1 class="mdl-card__title-text">{{repo.name }}</h1>
+												<span class="mdl-list__item-sub-title">{{repo.owner.login }}</span>
+                                                </span>
+                                            </li>
+                                        </ul>
+
+                                        <div class="mdl-card__supporting-text">
+                                            <p>{{repo.description}}</p>
+                                        </div>
+                                        <div class="mdl-card__media">
+                                            <img src="assets/img/languages/angular.png" width="42" alt="Angular Logo">
+                                            <img src="assets/img/languages/java.png" width="42" alt="Ionic Logo">
+                                            <img src="assets/img/languages/mysql.png" width="42" alt="MySql Logo">
+                                        </div>
+                                        <div class="mdl-card__actions">
+                                            <ul class="metrics-list mdl-list">
+                                                <li class="mdl-list__item">
+                                                    <span class="mdl-list__item-primary-content" [id]="'watchers-'+repo.id">
+														<i class="material-icons  mdl-list__item-icon">remove_red_eye</i>
+														{{repo.watchers_count}}
+													</span>
+                                                    <!-- Watchers Tooltip -->
+                                                    <div class="mdl-tooltip mdl-tooltip--top" [attr.for]="'watchers-'+repo.id">
+                                                        {{repo.watchers_count}} Watchers
+                                                    </div>
+                                                </li>
+                                                <li class="mdl-list__item">
+                                                    <span class="mdl-list__item-primary-content" [id]="'stars-'+repo.id">
+														<i class="material-icons mdl-list__item-icon" >star</i>
+														{{repo.stargazers_count}}
+													</span>
+                                                    <!-- Stars Tooltip -->
+                                                    <div class="mdl-tooltip mdl-tooltip--top" [attr.for]="'stars-'+repo.id">
+                                                        {{repo.stargazers_count}} Stars
+                                                    </div>
+                                                </li>
+                                                <li class="mdl-list__item">
+                                                    <span class="mdl-list__item-primary-content" [id]="'forks-'+repo.id">
+														<i class="material-icons mdl-list__item-icon">call_split</i>
+														{{repo.forks_count}}
+													</span>
+                                                    <!-- Forks Tooltip -->
+                                                    <div class="mdl-tooltip mdl-tooltip--top" [attr.for]="'forks-'+repo.id">
+                                                        {{repo.forks_count}} Forks
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            </repos>
+                        </div>
+                        <!--ORGANIZATIONS-->
+                        <div class="organizations" id="organizations">
+                            <div class=" organization-container">
+                                <div class="mdl-cell mdl-cell--12-col ">
+                                    <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast "> Our Organizations</div>
+                                    <div class="mdl-grid ">
+                                        <div class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
+                                            <div class="logo mdl-card__media ">
+                                                <img class="image " alt="Trade Nexus " src="assets/img/trade.png">
+                                            </div>
+                                            <div class="mdl-color-text--grey-800 ">
+                                                <div class="mdl-card__title ">
+                                                    <h1 class="mdl-card__title-text ">Trade Nexus</h1>
+                                                </div>
+                                                <div class="mdl-card__supporting-text ">
+                                                    <p>
+                                                        A broker neutral automated and algorithmic trading platform!
+                                                    </p>
+                                                    <small>
+														<a href="https://github.com/trade-nexus" target="_blank " class="mdl-color-text--grey-600 ">https://github.com/trade-nexus</a>
+												</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
+                                            <div class="logo mdl-card__media ">
+                                                <img class="image " alt="Aurora Solutions " src="assets/img/aurora.png ">
+                                            </div>
+                                            <div class="mdl-color-text--grey-800 ">
+                                                <div class="mdl-card__title ">
+                                                    <h1 class="mdl-card__title-text ">Aurora Solutions</h1>
+                                                </div>
+                                                <div class="mdl-card__supporting-text ">
+                                                    <p>
+                                                        Aurora helps clients turning their ideas into high quality software - without the hassles typically associated with outsourcing.
+                                                    </p>
+                                                    <small>
+														<a href="https://github.com/aurora-solutions" target="_blank " class="mdl-color-text--grey-600 "> https://github.com/aurora-solutions</a>
+												</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
+                                            <div class="logo mdl-card__media ">
+                                                <img class="image " alt="RSS" src="assets/img/rss.png ">
+                                            </div>
+                                            <div class="mdl-color-text--grey-800 ">
+                                                <div class="mdl-card__title ">
+                                                    <h1 class="mdl-card__title-text ">Rapid Startup Studio</h1>
+                                                </div>
+                                                <div class="mdl-card__supporting-text ">
+                                                    <p>
+                                                        A tech enabler for digital startups
+                                                    </p>
+                                                    <small>
+														<a href="https://github.com/rapid-startup-studio" target="_blank " class="mdl-color-text--grey-600 ">https://github.com/rapid-startup-studio</a>
+												</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
+                                            <div class="logo mdl-card__media ">
+                                                <img class="image " alt="Coin Work " src="assets/img/coin.png">
+                                            </div>
+                                            <div class="mdl-color-text--grey-800 ">
+                                                <div class="mdl-card__title ">
+                                                    <h1 class="mdl-card__title-text ">Coin Worx</h1>
+                                                </div>
+                                                <div class="mdl-card__supporting-text ">
+                                                    <p>
+                                                        <em>No description</em>
+                                                    </p>
+                                                    <small>
+														<a href="https://github.com/coin-worx" target="_blank " class="mdl-color-text--grey-600 "> https://github.com/coin-worx</a>
+												</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--FOOTER-->
+                <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+                    <ul class="docs-link-list">
+                        <li><a class="mdl-color-text--grey-300" href="http://www.aurorasolutions.io/">AURORA SOLUTIONS</a></li>
+                    </ul>
+                </footer>
+        </main>
+        </div>
+        <!--SCRIPTS-->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/jquery/jquery.easing.min.js"></script>
+        <script src="assets/libs/jquery/jquery.smooth-scroll.js"></script>
+        <script src="assets/libs/material-lite/material-lite.min.js"></script>
+        <script src="assets/js/events.js"></script>
+        <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

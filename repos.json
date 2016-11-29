@@ -1,0 +1,39 @@
+[{
+        "name": "aurora-solutions",
+        "repos": [
+            "grails-spring-security-yubikey"
+        ]
+    },
+    {
+        "name": "trade-nexus",
+        "repos": [
+            "tradesharp-core",
+            "tradesharp-core",
+            "tradesharp-ui",
+            "tradesharp-forexware-connector",
+            "tradesharp-blackwood-connector",
+            "trade-mirror"
+        ]
+    },
+    {
+        "name": "stakater",
+        "repos": [
+            "prod-deployment-reference",
+            "infrastructure-reference",
+            "blueprint-utilities-aws",
+            "blueprint-storage-aws",
+            "blueprint-network-aws",
+            "blueprint-instance-pool-aws",
+            "ami-baker"
+
+        ]
+    },
+    {
+        "name": "coin-worx",
+        "repos": [
+            "coin-exchange-backend",
+            "coin-exchange-frontend",
+            "ether-wallet"
+        ]
+    }
+]
