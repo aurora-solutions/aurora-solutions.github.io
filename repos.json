@@ -5,17 +5,6 @@
         ]
     },
     {
-        "name": "trade-nexus",
-        "repos": [
-            "tradesharp-core",
-            "tradesharp-core",
-            "tradesharp-ui",
-            "tradesharp-forexware-connector",
-            "tradesharp-blackwood-connector",
-            "trade-mirror"
-        ]
-    },
-    {
         "name": "stakater",
         "repos": [
             "prod-deployment-reference",
@@ -29,11 +18,22 @@
         ]
     },
     {
+        "name": "trade-nexus",
+        "repos": [
+            "tradesharp-core",
+            "tradesharp-core",
+            "tradesharp-ui",
+            "tradesharp-forexware-connector",
+            "tradesharp-blackwood-connector",
+            "trade-mirror"
+        ]
+    },
+    {
         "name": "coin-worx",
         "repos": [
+            "ether-wallet",
             "coin-exchange-backend",
-            "coin-exchange-frontend",
-            "ether-wallet"
+            "coin-exchange-frontend"
         ]
     }
 ]
