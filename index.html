@@ -109,7 +109,7 @@
                                 </div>
                                 <div ng-repeat="repo in repos | filter:query | orderBy: sortOrder" ng-class="{'mdl-cell--12-col-desktop':list_view}" class="mdl-card mdl-cell--middle mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone ">
                                     <!--CARD-->
-                                    <a [attr.href]="repo.html_url" target="_blank" class="repo-link repo-card">
+                                    <a href="{{repo.html_url}}" target="_blank" class="repo-link repo-card">
                                         <ul class="mdl-list">
                                             <li class="mdl-list__item mdl-list__item--two-line">
                                                 <span class="mdl-list__item-primary-content">
@@ -187,7 +187,7 @@
                                                     </p>
                                                     <small>
 														<a href="{{org.html_url}}" target="_blank " class="mdl-color-text--grey-600 ">{{org.html_url}}</a>
-												</small>
+												    </small>
                                                 </div>
                                             </div>
                                         </div>

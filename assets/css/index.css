@@ -238,7 +238,7 @@ header {
   box-sizing: content-box;
   -webkit-box-sizing: content-box; }
 
-#repos .repo-card .repo-link {
+#repos .repo-link {
   text-decoration: none; }
 
 #repos .repo-card .mdl-card__media {
