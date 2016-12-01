@@ -35,5 +35,9 @@
             "coin-exchange-backend",
             "coin-exchange-frontend"
         ]
+    },
+    {
+        "name": "rpdstartup",
+        "repos": []
     }
 ]

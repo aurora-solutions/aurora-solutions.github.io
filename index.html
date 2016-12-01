@@ -173,74 +173,20 @@
                                 <div class="mdl-cell mdl-cell--12-col ">
                                     <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast "> Our Organizations</div>
                                     <div class="mdl-grid ">
-                                        <div class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
+                                        <div ng-repeat="org in orgs" class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
                                             <div class="logo mdl-card__media ">
-                                                <img class="image " alt="Trade Nexus " src="assets/img/trade.png">
+                                                <img class="image " alt="{{org.name}}" src="{{org.avatar_url || 'assets/img/github.png'}}">
                                             </div>
                                             <div class="mdl-color-text--grey-800 ">
                                                 <div class="mdl-card__title ">
-                                                    <h1 class="mdl-card__title-text ">Trade Nexus</h1>
+                                                    <h1 class="mdl-card__title-text ">{{org.name}}</h1>
                                                 </div>
                                                 <div class="mdl-card__supporting-text ">
                                                     <p>
-                                                        A broker neutral automated and algorithmic trading platform!
+                                                        {{org.bio}}
                                                     </p>
                                                     <small>
-														<a href="https://github.com/trade-nexus" target="_blank " class="mdl-color-text--grey-600 ">https://github.com/trade-nexus</a>
-												</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
-                                            <div class="logo mdl-card__media ">
-                                                <img class="image " alt="Aurora Solutions " src="assets/img/aurora.png ">
-                                            </div>
-                                            <div class="mdl-color-text--grey-800 ">
-                                                <div class="mdl-card__title ">
-                                                    <h1 class="mdl-card__title-text ">Aurora Solutions</h1>
-                                                </div>
-                                                <div class="mdl-card__supporting-text ">
-                                                    <p>
-                                                        Aurora helps clients turning their ideas into high quality software - without the hassles typically associated with outsourcing.
-                                                    </p>
-                                                    <small>
-														<a href="https://github.com/aurora-solutions" target="_blank " class="mdl-color-text--grey-600 "> https://github.com/aurora-solutions</a>
-												</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
-                                            <div class="logo mdl-card__media ">
-                                                <img class="image " alt="RSS" src="assets/img/rss.png ">
-                                            </div>
-                                            <div class="mdl-color-text--grey-800 ">
-                                                <div class="mdl-card__title ">
-                                                    <h1 class="mdl-card__title-text ">Rapid Startup Studio</h1>
-                                                </div>
-                                                <div class="mdl-card__supporting-text ">
-                                                    <p>
-                                                        A tech enabler for digital startups
-                                                    </p>
-                                                    <small>
-														<a href="https://github.com/rapid-startup-studio" target="_blank " class="mdl-color-text--grey-600 ">https://github.com/rapid-startup-studio</a>
-												</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
-                                            <div class="logo mdl-card__media ">
-                                                <img class="image " alt="Coin Work " src="assets/img/coin.png">
-                                            </div>
-                                            <div class="mdl-color-text--grey-800 ">
-                                                <div class="mdl-card__title ">
-                                                    <h1 class="mdl-card__title-text ">Coin Worx</h1>
-                                                </div>
-                                                <div class="mdl-card__supporting-text ">
-                                                    <p>
-                                                        <em>No description</em>
-                                                    </p>
-                                                    <small>
-														<a href="https://github.com/coin-worx" target="_blank " class="mdl-color-text--grey-600 "> https://github.com/coin-worx</a>
+														<a href="{{org.html_url}}" target="_blank " class="mdl-color-text--grey-600 ">{{org.html_url}}</a>
 												</small>
                                                 </div>
                                             </div>

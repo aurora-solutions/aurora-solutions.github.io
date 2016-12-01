@@ -4,6 +4,7 @@ angular.module('showcase', [])
         // Variables
         var organizations = [];
         $scope.repos = [];
+        $scope.orgs = [];
         $scope.sortOrder = "";
         $scope.loading = true;
 
@@ -17,10 +18,29 @@ angular.module('showcase', [])
             .get('repos.json')
             .then(function(organizations) {
                 loadOrganizationsData(organizations.data);
+                loadRepositoriesData(organizations.data);
             });
 
-        //Loading Organizations Data
+        //Loading Orgnaizations data for organizations listed in repos.json
         var loadOrganizationsData = function(organizationsList) {
+
+            return $q.all(organizationsList.map(function(org) {
+                return $http
+                    .get('https://api.github.com/users/' + org.name + '?client_id=' + client_id + '&client_secret=' + client_secret)
+                }))
+                .then(function(results) {
+                    results.forEach(function(organization) {
+                        $scope.orgs = $scope.orgs.concat(organization.data);
+
+                    });
+
+                    $scope.loading = false;
+                });
+
+        }
+
+        //Loading Repositories data for organizations listed in repos.json
+        var loadRepositoriesData = function(organizationsList) {
             return $q.all(organizationsList.map(function(org) {
                     return $http
                         .get('https://api.github.com/users/' + org.name + '/repos?type=all&client_id=' + client_id + '&client_secret=' + client_secret)
