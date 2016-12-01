@@ -238,7 +238,7 @@ header {
   box-sizing: content-box;
   -webkit-box-sizing: content-box; }
 
-#repos .repo-link {
+#repos .repo-card.repo-link {
   text-decoration: none; }
 
 #repos .repo-card .mdl-card__media {
@@ -263,7 +263,6 @@ header {
 #repos .repo-card .mdl-card__supporting-text {
   height: 75px; }
   #repos .repo-card .mdl-card__supporting-text p {
-    word-break: break-all;
     overflow: hidden;
     text-overflow: ellipsis; }
 
