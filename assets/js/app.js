@@ -51,6 +51,10 @@ angular.module('showcase', [])
 
                         angular.forEach(organization.data, function(repo) {
                             if (organizationsList[i].repos.indexOf(repo.name.toLowerCase()) > -1) {
+                                var url = 'https://api.github.com/repos/'+repo.owner.login+'/'+repo.name+'/languages?type=all&client_id=' + client_id + '&client_secret=' + client_secret;
+                                $http.get(url).then(function(languages) {
+                                        repo.languages = getLanguages(languages.data, 3);
+                                    });
                                 $scope.repos = $scope.repos.concat(repo);
                             }
                         });
@@ -61,4 +65,25 @@ angular.module('showcase', [])
                 });
         }
 
-    })
+    });
+
+function getLanguages(obj, limit) {
+    var keys = Object.keys(obj);
+    if (keys.length < 1) {
+        return [];
+    }
+
+    var ret = new Object,
+        count = 0;
+
+    angular.forEach(keys, function (key, arrayIndex) {
+        if (count >= limit) {
+            //ret['Other'] = ret['Other'] + obj[key];
+        }
+        else {
+            ret[key] = obj[key];
+        }
+        count++;
+    });
+    return ret;
+}

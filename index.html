@@ -124,9 +124,9 @@
                                             <p>{{repo.description}}</p>
                                         </div>
                                         <div class="mdl-card__media">
-                                            <img src="assets/img/languages/angular.png" width="42" alt="Angular Logo">
-                                            <img src="assets/img/languages/java.png" width="42" alt="Ionic Logo">
-                                            <img src="assets/img/languages/mysql.png" width="42" alt="MySql Logo">
+                                            <span class="mdl-chip" ng-repeat="(lang, data) in repo.languages">
+                                                <span class="mdl-chip__text">{{lang}}</span>
+                                            </span>
                                         </div>
                                         <div class="mdl-card__actions">
                                             <ul class="metrics-list mdl-list">
