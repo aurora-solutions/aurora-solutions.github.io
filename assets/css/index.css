@@ -261,7 +261,7 @@ header {
   word-break: break-all; }
 
 #repos .repo-card .mdl-card__supporting-text {
-  height: 75px; }
+  height: 350px; }
   #repos .repo-card .mdl-card__supporting-text p {
     overflow: hidden;
     text-overflow: ellipsis; }
