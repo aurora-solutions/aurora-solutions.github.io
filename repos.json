@@ -21,7 +21,6 @@
         "name": "trade-nexus",
         "repos": [
             "tradesharp-core",
-            "tradesharp-core",
             "tradesharp-ui",
             "tradesharp-forexware-connector",
             "tradesharp-blackwood-connector",
