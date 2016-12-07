@@ -24,6 +24,7 @@
             "tradesharp-ui",
             "tradesharp-forexware-connector",
             "tradesharp-blackwood-connector",
+            "tradesharp-iqfeed-connector",
             "trade-mirror"
         ]
     },
