@@ -1,5 +1,5 @@
 angular.module('showcase', [])
-    .controller('homeController', function($scope, $http, $q) {
+    .controller('homeController', function($scope, $http, $q, $window) {
 
         // Variables
         var organizations = [];
@@ -25,13 +25,12 @@ angular.module('showcase', [])
         var loadOrganizationsData = function(organizationsList) {
 
             return $q.all(organizationsList.map(function(org) {
-                return $http
-                    .get('https://api.github.com/users/' + org.name + '?client_id=' + client_id + '&client_secret=' + client_secret)
+                    return $http
+                        .get('https://api.github.com/users/' + org.name + '?client_id=' + client_id + '&client_secret=' + client_secret)
                 }))
                 .then(function(results) {
                     results.forEach(function(organization) {
                         $scope.orgs = $scope.orgs.concat(organization.data);
-
                     });
 
                     $scope.loading = false;
@@ -46,24 +45,29 @@ angular.module('showcase', [])
                         .get('https://api.github.com/users/' + org.name + '/repos?type=all&client_id=' + client_id + '&client_secret=' + client_secret)
                 }))
                 .then(function(results) {
-
                     results.forEach(function(organization, i) {
-
                         angular.forEach(organization.data, function(repo) {
-                            if (organizationsList[i].repos.indexOf(repo.name.toLowerCase()) > -1) {
-                                var url = 'https://api.github.com/repos/'+repo.owner.login+'/'+repo.name+'/languages?type=all&client_id=' + client_id + '&client_secret=' + client_secret;
-                                $http.get(url).then(function(languages) {
+                            angular.forEach(organizationsList[i].repos, function(repository) {
+                                //Check if repository exist in repos.json list that is to be shown 
+                                if (repository.name.toLowerCase() == repo.name.toLowerCase()) {
+                                    var url = 'https://api.github.com/repos/' + repo.owner.login + '/' + repo.name + '/languages?type=all&client_id=' + client_id + '&client_secret=' + client_secret;
+                                    $http.get(url).then(function(languages) {
                                         repo.languages = getLanguages(languages.data, 3);
                                     });
-                                $scope.repos = $scope.repos.concat(repo);
-                            }
+                                    repo.frameworks = repository.frameworks;
+                                    $scope.repos = $scope.repos.concat(repo);
+                                }
+                            });
                         });
-
                     });
 
                     $scope.loading = false;
                 });
         }
+
+        $scope.OpenRepo = function(url) {
+            $window.open(url, "_blank");
+        };
 
     });
 
@@ -76,11 +80,10 @@ function getLanguages(obj, limit) {
     var ret = new Object,
         count = 0;
 
-    angular.forEach(keys, function (key, arrayIndex) {
+    angular.forEach(keys, function(key, arrayIndex) {
         if (count >= limit) {
             //ret['Other'] = ret['Other'] + obj[key];
-        }
-        else {
+        } else {
             ret[key] = obj[key];
         }
         count++;

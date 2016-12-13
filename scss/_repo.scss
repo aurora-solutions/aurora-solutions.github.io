@@ -89,12 +89,17 @@
         //*************************************/
         // CARDS
         //*************************************/
-        .repo-link {
-            text-decoration: none;
-        }
         .mdl-card__media {
             padding: 16px 16px 0;
             background-color: white;
+            min-height: 50px;
+            .framework {
+                height: 35px;
+                padding: 0 5px;
+            }
+            .framework:first-child {
+                padding-left: 0;
+            }
         }
         .mdl-card__media.mdl-typography--text-right {
             padding-top: 0;
@@ -112,7 +117,7 @@
             word-break: break-all;
         }
         .mdl-card__supporting-text {
-            height: 75px;
+            height: 150px;
             p {
                 word-break: break-all;
                 overflow: hidden;
@@ -160,4 +165,19 @@
             }
         }
     }
+    a.repo-link {
+        text-decoration: none;
+    }
+}
+
+.grad1 {
+    @include gradient(#322e5c, #234c8d);
+}
+
+.grad2 {
+    @include gradient(#04423c, #078f82);
+}
+
+.grad3 {
+    @include gradient(#04423c, #078f82);
 }

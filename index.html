@@ -100,36 +100,31 @@
                                             <li class="mdl-menu__item" ng-click="sortOrder='-stargazers_count'" ng-disabled="sortOrder=='-stargazers_count'">Popularity</li>
                                             <li class="mdl-menu__item" ng-click="sortOrder='-size'" ng-disabled="sortOrder=='-size'">Size</li>
                                         </ul>
-                                        <button class=" mdl-button mdl-js-button " ng-click="list_view=! list_view ">
-											<i class="material-icons ">{{(list_view?'view_list':'apps')}}</i>
-										</button>
                                     </div>
                                     <!-- Loading Bar -->
                                     <div ng-if="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate mdl-cell--12-col"></div>
                                 </div>
-                                <div ng-repeat="repo in repos | filter:query | orderBy: sortOrder" ng-class="{'mdl-cell--12-col-desktop':list_view}" class="mdl-card mdl-cell--middle mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone ">
+                                <div ng-repeat="repo in repos | filter:query | orderBy: sortOrder track by $index" class="mdl-card mdl-cell--middle mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone ">
                                     <!--CARD-->
-                                    <a href="{{repo.html_url}}" target="_blank" class="repo-link repo-card">
+                                    <div class="repo-card">
                                         <ul class="mdl-list">
-                                            <li class="mdl-list__item mdl-list__item--two-line" style="position:absolute;width:100%;filter:blur(2px);-webkit-filter:blur(2px); opacity: 0.1; background: url('{{repo.owner.avatar_url || 'assets/img/github.png'}}') center / cover">
-
+                                            <li class="mdl-list__item mdl-list__item--two-line" style="position:absolute;width:100%;filter:blur(2px);-webkit-filter:blur(2px); opacity: 0.1;z-index:-1; background: url('{{repo.owner.avatar_url || 'assets/img/github.png'}}') center / cover">
                                             </li>
-                                            <li class="mdl-list__item mdl-list__item--two-line">
-                                                <span class="mdl-list__item-primary-content">
-													<!--<img class=" mdl-list__item-avatar" src="{{repo.owner.avatar_url || 'assets/img/github.png'}}" width="50" alt="Project Logo">-->
-													<h1 class="mdl-card__title-text">{{repo.name }}</h1>
-												    <span class="mdl-list__item-sub-title" ng-repeat="org in orgs|filter:login=repo.owner.login">{{org.name}}</span>
-                                                </span>
+                                            <li class="mdl-list__item mdl-list__item--two-line grad" ng-class="{'grad1':true}">
+                                                <div class="mdl-list__item-primary-content">
+                                                    <a href="{{repo.html_url}}" target="_blank" class="repo-link mdl-card__title-text mdl-color-text--grey-100">{{repo.name }}</a>
+                                                    <span class="mdl-list__item-sub-title mdl-color-text--grey-100" ng-repeat="org in orgs|filter:login=repo.owner.login">{{org.name}}</span>
+                                                </div>
                                             </li>
                                         </ul>
-
                                         <div class="mdl-card__supporting-text">
-                                            <p>{{repo.description}}</p>
+                                            <p> {{repo.description}}</p>
                                         </div>
                                         <div class="mdl-card__media">
-                                            <span class="mdl-chip" ng-repeat="(lang, data) in repo.languages">
+                                            <!--<span class="mdl-chip" ng-repeat="(lang, data) in repo.languages">
                                                 <span class="mdl-chip__text">{{lang}}</span>
-                                            </span>
+                                            </span>-->
+                                            <img class="framework" ng-repeat="framework in repo.frameworks | limitTo : 4 track by $index" ng-src="assets/img/languages/{{framework}}.png" alt="{{framework}}">
                                         </div>
                                         <div class="mdl-card__actions">
                                             <ul class="metrics-list mdl-list">
@@ -165,32 +160,33 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
+                                </repos>
                             </div>
-                            </repos>
-                        </div>
-                        <!--ORGANIZATIONS-->
-                        <div class="organizations" id="organizations">
-                            <div class=" organization-container">
-                                <div class="mdl-cell mdl-cell--12-col ">
-                                    <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast "> Our Organizations</div>
-                                    <div class="mdl-grid ">
-                                        <div ng-repeat="org in orgs" class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
-                                            <div class="logo mdl-card__media ">
-                                                <img class="image " alt="{{org.name}}" src="{{org.avatar_url || 'assets/img/github.png'}}">
-                                            </div>
-                                            <div class="mdl-color-text--grey-800 ">
-                                                <div class="mdl-card__title ">
-                                                    <h1 class="mdl-card__title-text ">{{org.name}}</h1>
+                            <!--ORGANIZATIONS-->
+                            <div class="organizations" id="organizations">
+                                <div class=" organization-container">
+                                    <div class="mdl-cell mdl-cell--12-col ">
+                                        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast "> Our Organizations</div>
+                                        <div class="mdl-grid ">
+                                            <div ng-repeat="org in orgs" class="mdl-card mdl-cell--middle mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp ">
+                                                <div class="logo mdl-card__media ">
+                                                    <img class="image " alt="{{org.name}}" ng-src="{{org.avatar_url || 'assets/img/github.png'}}">
                                                 </div>
-                                                <div class="mdl-card__supporting-text ">
-                                                    <p>
-                                                        {{org.bio}}
-                                                    </p>
-                                                    <small>
+                                                <div class="mdl-color-text--grey-800 ">
+                                                    <div class="mdl-card__title ">
+                                                        <h1 class="mdl-card__title-text ">{{org.name}}</h1>
+                                                    </div>
+                                                    <div class="mdl-card__supporting-text ">
+                                                        <p>
+                                                            {{org.bio}}
+                                                        </p>
+                                                        <small>
 														<a href="{{org.html_url}}" target="_blank " class="mdl-color-text--grey-600 ">{{org.html_url}}</a>
 												    </small>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -199,13 +195,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--FOOTER-->
-                <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
-                    <ul class="docs-link-list">
-                        <li><a class="mdl-color-text--grey-300" href="http://www.aurorasolutions.io/">AURORA SOLUTIONS</a></li>
-                    </ul>
-                </footer>
+                    <!--FOOTER-->
+                    <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+                        <ul class="docs-link-list">
+                            <li><a class="mdl-color-text--grey-300" href="http://www.aurorasolutions.io/">AURORA SOLUTIONS</a></li>
+                        </ul>
+                    </footer>
         </main>
         </div>
         <!--SCRIPTS-->
@@ -215,7 +210,6 @@
         <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
         <script src="assets/js/events.js"></script>
         <script src="assets/js/app.js"></script>
-
 </body>
 
 </html>

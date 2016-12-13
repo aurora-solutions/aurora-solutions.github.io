@@ -1,39 +1,80 @@
 [{
         "name": "aurora-solutions",
-        "repos": [
-            "grails-spring-security-yubikey"
-        ]
+        "repos": [{
+            "name": "grails-spring-security-yubikey",
+            "frameworks": []
+        }]
     },
     {
         "name": "stakater",
-        "repos": [
-            "prod-deployment-reference",
-            "infrastructure-reference",
-            "blueprint-utilities-aws",
-            "blueprint-storage-aws",
-            "blueprint-network-aws",
-            "blueprint-instance-pool-aws",
-            "ami-baker"
-
+        "repos": [{
+                "name": "prod-deployment-reference",
+                "frameworks": []
+            },
+            {
+                "name": "infrastructure-reference",
+                "frameworks": []
+            },
+            {
+                "name": "blueprint-utilities-aws",
+                "frameworks": ["aws", "terraform"]
+            },
+            {
+                "name": "blueprint-storage-aws",
+                "frameworks": ["aws", "terraform"]
+            },
+            {
+                "name": "blueprint-network-aws",
+                "frameworks": ["aws", "terraform", "shell-scripting"]
+            },
+            {
+                "name": "blueprint-instance-pool-aws",
+                "frameworks": ["aws", "terraform"]
+            },
+            {
+                "name": "ami-baker",
+                "frameworks": ["packer", "shell-scripting"]
+            }
         ]
     },
     {
         "name": "trade-nexus",
-        "repos": [
-            "tradesharp-core",
-            "tradesharp-core",
-            "tradesharp-ui",
-            "tradesharp-forexware-connector",
-            "tradesharp-blackwood-connector",
-            "trade-mirror"
+        "repos": [{
+                "name": "tradesharp-core",
+                "frameworks": []
+            },
+            {
+                "name": "tradesharp-ui",
+                "frameworks": []
+            },
+            {
+                "name": "tradesharp-forexware-connector",
+                "frameworks": []
+            },
+            {
+                "name": "tradesharp-blackwood-connector",
+                "frameworks": []
+            },
+            {
+                "name": "trade-mirror",
+                "frameworks": []
+            }
         ]
     },
     {
         "name": "coin-worx",
-        "repos": [
-            "ether-wallet",
-            "coin-exchange-backend",
-            "coin-exchange-frontend"
+        "repos": [{
+                "name": "ether-wallet",
+                "frameworks": ["ethereum", "meteorjs", "jquery", "angular2", "mongodb", "blockchain"]
+            },
+            {
+                "name": "coin-exchange-backend",
+                "frameworks": []
+            },
+            {
+                "name": "coin-exchange-frontend",
+                "frameworks": []
+            }
         ]
     },
     {
