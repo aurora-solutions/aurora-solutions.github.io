@@ -90,11 +90,14 @@
         // CARDS
         //*************************************/
         .mdl-card__media {
-            padding: 16px 16px 0;
+            padding: 16px 16px 10px;
             background-color: white;
             min-height: 50px;
+            .framework-list {
+                display: inline-block;
+            }
             .framework {
-                height: 35px;
+                height: 30px;
                 padding: 0 5px;
             }
             .framework:first-child {
@@ -119,7 +122,6 @@
         .mdl-card__supporting-text {
             height: 150px;
             p {
-                word-break: break-all;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
@@ -135,7 +137,6 @@
             background-color: rgb(247, 247, 247);
             padding: 0;
             box-sizing: border-box;
-            margin-top: 16px;
         }
         .metrics-list li {
             font-size: 13px;
@@ -156,6 +157,7 @@
                 flex-direction: column;
                 padding: 0;
                 width: 33%;
+                overflow: visible;
                 .mdl-list__item-primary-content {
                     outline: none;
                 }
@@ -167,6 +169,26 @@
     }
     a.repo-link {
         text-decoration: none;
+    }
+    .repo-language-stats {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid #ddd;
+        border-top: 0;
+        .language {
+            display: block;
+            line-height: 8px;
+            text-indent: -9999px;
+            background-color: #178600;
+            width: 75%;
+        }
     }
 }
 
@@ -180,4 +202,51 @@
 
 .grad3 {
     @include gradient(#04423c, #078f82);
+}
+
+
+/* Tooltip container */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    /* If you want dots under the hoverable text */
+}
+
+
+/* Tooltip text */
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+    z-index: 999;
+    background: rgba(97, 97, 97, .9);
+    background-color: #333;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 14px;
+    text-align: center;
+    max-width: 170px;
+    min-width: 80px;
+    width: auto;
+    border-radius: 2px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1000;
+    top: -10px;
+    left: -50%;
+    &.tooltip-icon {
+        top: -30px;
+    }
+}
+
+
+/* Show the tooltip text when you mouse over the tooltip container */
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    -webkit-animation: pulse 200ms cubic-bezier(0, 0, .2, 1)forwards;
+    animation: pulse 200ms cubic-bezier(0, 0, .2, 1)forwards;
 }

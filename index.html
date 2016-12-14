@@ -30,15 +30,12 @@
             background: url(assets/img/loader/loader.gif) center no-repeat #fff;
         }
     </style>
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-indigo.min.css" />
     <!--FONTS-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-indigo.min.css" />
     <link href="dist/assets/css/styles.min.css" rel="stylesheet">
-    <script>
-        // Google Analytics Script
-    </script>
     <!--JS-->
     <script src="assets/libs/angular/angular.min.js"></script>
 </head>
@@ -121,42 +118,52 @@
                                             <p> {{repo.description}}</p>
                                         </div>
                                         <div class="mdl-card__media">
-                                            <!--<span class="mdl-chip" ng-repeat="(lang, data) in repo.languages">
+                                            <div class="framework-list tooltip" ng-hide="showLang" ng-repeat="framework in repo.frameworks | limitTo : 4 track by $index">
+                                                <img class="framework" ng-src="assets/img/languages/{{framework}}.png" alt="{{framework}}">
+                                                <div class="tooltip-text tooltip-icon">
+                                                    {{framework}}
+                                                </div>
+                                            </div>
+                                            <div class="language-list" ng-show="showLang" ng-repeat="(lang, data) in repo.languages">
                                                 <span class="mdl-chip__text">{{lang}}</span>
-                                            </span>-->
-                                            <img class="framework" ng-repeat="framework in repo.frameworks | limitTo : 4 track by $index" ng-src="assets/img/languages/{{framework}}.png" alt="{{framework}}">
+                                            </div>
+                                        </div>
+                                        <div class="language-bar" ng-click="showLang=!showLang">
+                                            <div class="repo-language-stats" title="Click for language details" data-ga-click="Repository, language bar stats toggle, location:repo overview">
+                                                <span class="language" aria-label="Groovy 79.9%">Groovy</span>
+                                            </div>
                                         </div>
                                         <div class="mdl-card__actions">
                                             <ul class="metrics-list mdl-list">
                                                 <li class="mdl-list__item">
-                                                    <span class="mdl-list__item-primary-content" [id]="'watchers-'+repo.id">
+                                                    <span class="mdl-list__item-primary-content tooltip">
 														<i class="material-icons  mdl-list__item-icon">remove_red_eye</i>
 														{{repo.watchers_count}}
+                                                        <!-- Watchers Tooltip -->
+                                                        <div class="tooltip-text">
+                                                             {{repo.watchers_count}} Watchers
+                                                        </div>
 													</span>
-                                                    <!-- Watchers Tooltip -->
-                                                    <div class="mdl-tooltip mdl-tooltip--top" [attr.for]="'watchers-'+repo.id">
-                                                        {{repo.watchers_count}} Watchers
-                                                    </div>
                                                 </li>
                                                 <li class="mdl-list__item">
-                                                    <span class="mdl-list__item-primary-content" [id]="'stars-'+repo.id">
+                                                    <span class="mdl-list__item-primary-content tooltip">
 														<i class="material-icons mdl-list__item-icon" >star</i>
 														{{repo.stargazers_count}}
+                                                        <!-- Stars Tooltip -->
+                                                         <div class="tooltip-text">
+                                                             {{repo.stargazers_count}} Stars
+                                                        </div>
 													</span>
-                                                    <!-- Stars Tooltip -->
-                                                    <div class="mdl-tooltip mdl-tooltip--top" [attr.for]="'stars-'+repo.id">
-                                                        {{repo.stargazers_count}} Stars
-                                                    </div>
                                                 </li>
                                                 <li class="mdl-list__item">
-                                                    <span class="mdl-list__item-primary-content" [id]="'forks-'+repo.id">
+                                                    <span class="mdl-list__item-primary-content tooltip">
 														<i class="material-icons mdl-list__item-icon">call_split</i>
 														{{repo.forks_count}}
+                                                        <!-- Forks Tooltip -->
+                                                        <div class="tooltip-text">
+                                                            {{repo.forks_count}} Forks
+                                                        </div>
 													</span>
-                                                    <!-- Forks Tooltip -->
-                                                    <div class="mdl-tooltip mdl-tooltip--top" [attr.for]="'forks-'+repo.id">
-                                                        {{repo.forks_count}} Forks
-                                                    </div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -207,9 +214,9 @@
         <script src="assets/libs/jquery/jquery.min.js"></script>
         <script src="assets/libs/jquery/jquery.easing.min.js"></script>
         <script src="assets/libs/jquery/jquery.smooth-scroll.js"></script>
-        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
         <script src="assets/js/events.js"></script>
         <script src="assets/js/app.js"></script>
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 </body>
 
 </html>
