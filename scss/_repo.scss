@@ -94,14 +94,12 @@
             background-color: white;
             min-height: 50px;
             .framework-list {
-                display: inline-block;
+                display: inline;
+                float: left;
             }
             .framework {
                 height: 30px;
-                padding: 0 5px;
-            }
-            .framework:first-child {
-                padding-left: 0;
+                padding-right: 5px;
             }
         }
         .mdl-card__media.mdl-typography--text-right {
@@ -170,8 +168,15 @@
     a.repo-link {
         text-decoration: none;
     }
+    .language {
+        display: inline-block;
+    }
+    .language-bar {
+        display: table;
+        width: 100.5%;
+    }
     .repo-language-stats {
-        display: block;
+        display: table;
         width: 100%;
         overflow: hidden;
         white-space: nowrap;
@@ -182,13 +187,115 @@
         user-select: none;
         border: 1px solid #ddd;
         border-top: 0;
-        .language {
-            display: block;
+        line-height: 14px;
+        .language-info {
+            display: table-cell;
             line-height: 8px;
             text-indent: -9999px;
-            background-color: #178600;
-            width: 75%;
+            background-color: #ccc;
+            width: 0%;
         }
+    }
+}
+
+.mdl-card__media {
+    .stats-switcher-viewport {
+        height: 41px;
+        overflow: hidden;
+    }
+    .stats-switcher-viewport .stats-switcher-wrapper {
+        position: relative;
+        -webkit-transition: top 0.25s ease-in-out;
+        transition: top 0.25s ease-in-out;
+        top: -41px;
+    }
+    .stats-switcher-viewport .stats-switcher-wrapper.show-languages {
+        top: 0;
+    }
+    .overall-summary {
+        position: relative;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+    .overall-summary-bottomless {
+        margin-bottom: 0px;
+        border-bottom: 0;
+        border-radius: 3px 3px 0 0;
+    }
+    .container {
+        width: 980px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .container::before {
+        display: table;
+        content: "";
+    }
+    .container::after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+    ul,
+    ol,
+    .numbers-summary {
+        padding-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .numbers-summary {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+    .repository-lang-stats {
+        position: relative;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li {
+        display: table-cell;
+        width: 1%;
+        padding: 10px 5px;
+        text-align: center;
+        white-space: nowrap;
+        border-bottom: 0;
+    }
+    a {
+        background-color: transparent;
+        text-decoration: none;
+        -webkit-text-decoration-skip: objects;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li>a,
+    .repository-lang-stats ol.repository-lang-stats-numbers li>span {
+        font-weight: bold;
+        color: #999;
+        text-decoration: none;
+        font-size: 11px;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li .language-color {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li .lang {
+        color: #333;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li span.percent {
+        float: none;
+    }
+    .numbers-summary li {
+        display: table-cell;
+        padding: 0;
+        text-align: center;
+        white-space: nowrap;
+    }
+    .numbers-summary a,
+    .numbers-summary .nolink {
+        display: block;
+        padding: 10px 0;
+        color: #767676;
+        text-decoration: none;
     }
 }
 
@@ -204,17 +311,10 @@
     @include gradient(#04423c, #078f82);
 }
 
-
-/* Tooltip container */
-
 .tooltip {
     position: relative;
     display: inline-block;
-    /* If you want dots under the hoverable text */
 }
-
-
-/* Tooltip text */
 
 .tooltip .tooltip-text {
     visibility: hidden;
@@ -238,12 +338,10 @@
     top: -10px;
     left: -50%;
     &.tooltip-icon {
-        top: -30px;
+        top: 12.5px;
+        left: 100%;
     }
 }
-
-
-/* Show the tooltip text when you mouse over the tooltip container */
 
 .tooltip:hover .tooltip-text {
     visibility: visible;

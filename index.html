@@ -74,10 +74,12 @@
                             <p>
                                 WE LOVE <strong> OPEN SOURCE</strong>
                             </p>
+
                         </div>
                         <!--REPOS-->
                         <div id="repos">
                             <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast"> Repositories</div>
+
                             <!--<p class="mdl-typography--font-light">
                                 All of our open source repositories that our developers have worked on and are ready to be shared with rest of community
                             </p>-->
@@ -101,7 +103,7 @@
                                     <!-- Loading Bar -->
                                     <div ng-if="loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate mdl-cell--12-col"></div>
                                 </div>
-                                <div ng-repeat="repo in repos | filter:query | orderBy: sortOrder track by $index" class="mdl-card mdl-cell--middle mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone ">
+                                <div ng-init="showLang=true" ng-repeat="repo in repos | filter:query | orderBy: sortOrder track by $index" class="mdl-card mdl-cell--middle mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone ">
                                     <!--CARD-->
                                     <div class="repo-card">
                                         <ul class="mdl-list">
@@ -118,19 +120,35 @@
                                             <p> {{repo.description}}</p>
                                         </div>
                                         <div class="mdl-card__media">
-                                            <div class="framework-list tooltip" ng-hide="showLang" ng-repeat="framework in repo.frameworks | limitTo : 4 track by $index">
-                                                <img class="framework" ng-src="assets/img/languages/{{framework}}.png" alt="{{framework}}">
-                                                <div class="tooltip-text tooltip-icon">
-                                                    {{framework}}
+                                            <div class="stats-switcher-viewport">
+                                                <div class="stats-switcher-wrapper" ng-class="{'show-languages':showLang}">
+                                                    <div class="numbers-summary">
+                                                        <div class="commits" ng-repeat="framework in repo.frameworks | limitTo : 4 track by $index">
+                                                            <a class="framework-list tooltip">
+                                                                <img class="framework" ng-src="assets/img/languages/{{framework}}.png" alt="{{framework}}">
+                                                                <div class="tooltip-text tooltip-icon">
+                                                                    {{framework}}
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="repository-lang-stats">
+                                                        <ol class="repository-lang-stats-numbers">
+                                                            <li ng-repeat="lang in repo.languages">
+                                                                <a>
+                                                                    <span class="color-block language-color" style="background-color:{{lang.color}}"></span>
+                                                                    <span class="lang">{{lang.name}}</span>
+                                                                    <span class="percent">{{lang.stats+'%'}}</span>
+                                                                </a>
+                                                            </li>
+                                                        </ol>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="language-list" ng-show="showLang" ng-repeat="(lang, data) in repo.languages">
-                                                <span class="mdl-chip__text">{{lang}}</span>
                                             </div>
                                         </div>
                                         <div class="language-bar" ng-click="showLang=!showLang">
-                                            <div class="repo-language-stats" title="Click for language details" data-ga-click="Repository, language bar stats toggle, location:repo overview">
-                                                <span class="language" aria-label="Groovy 79.9%">Groovy</span>
+                                            <div class="repo-language-stats">
+                                                <span class="language-info" ng-repeat="lang in repo.languages" style="width:{{lang.stats+'%'}};background-color:{{lang.color}}">&nbsp;</span>
                                             </div>
                                         </div>
                                         <div class="mdl-card__actions">
@@ -214,9 +232,11 @@
         <script src="assets/libs/jquery/jquery.min.js"></script>
         <script src="assets/libs/jquery/jquery.easing.min.js"></script>
         <script src="assets/libs/jquery/jquery.smooth-scroll.js"></script>
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <script src="assets/libs/rcolor.js"></script>
         <script src="assets/js/events.js"></script>
         <script src="assets/js/app.js"></script>
-        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <script src="assets/js/utils.js"></script>
 </body>
 
 </html>

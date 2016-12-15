@@ -244,12 +244,11 @@ header {
   background-color: white;
   min-height: 50px; }
   #repos .repo-card .mdl-card__media .framework-list {
-    display: inline-block; }
+    display: inline;
+    float: left; }
   #repos .repo-card .mdl-card__media .framework {
     height: 30px;
-    padding: 0 5px; }
-  #repos .repo-card .mdl-card__media .framework:first-child {
-    padding-left: 0; }
+    padding-right: 5px; }
 
 #repos .repo-card .mdl-card__media.mdl-typography--text-right {
   padding-top: 0; }
@@ -312,8 +311,15 @@ header {
 #repos a.repo-link {
   text-decoration: none; }
 
+#repos .language {
+  display: inline-block; }
+
+#repos .language-bar {
+  display: table;
+  width: 100.5%; }
+
 #repos .repo-language-stats {
-  display: block;
+  display: table;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -323,13 +329,112 @@ header {
   -ms-user-select: none;
   user-select: none;
   border: 1px solid #ddd;
-  border-top: 0; }
-  #repos .repo-language-stats .language {
-    display: block;
+  border-top: 0;
+  line-height: 14px; }
+  #repos .repo-language-stats .language-info {
+    display: table-cell;
     line-height: 8px;
     text-indent: -9999px;
-    background-color: #178600;
-    width: 75%; }
+    background-color: #ccc;
+    width: 0%; }
+
+.mdl-card__media .stats-switcher-viewport {
+  height: 41px;
+  overflow: hidden; }
+
+.mdl-card__media .stats-switcher-viewport .stats-switcher-wrapper {
+  position: relative;
+  -webkit-transition: top 0.25s ease-in-out;
+  transition: top 0.25s ease-in-out;
+  top: -41px; }
+
+.mdl-card__media .stats-switcher-viewport .stats-switcher-wrapper.show-languages {
+  top: 0; }
+
+.mdl-card__media .overall-summary {
+  position: relative;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px; }
+
+.mdl-card__media .overall-summary-bottomless {
+  margin-bottom: 0px;
+  border-bottom: 0;
+  border-radius: 3px 3px 0 0; }
+
+.mdl-card__media .container {
+  width: 980px;
+  margin-right: auto;
+  margin-left: auto; }
+
+.mdl-card__media .container::before {
+  display: table;
+  content: ""; }
+
+.mdl-card__media .container::after {
+  display: table;
+  clear: both;
+  content: ""; }
+
+.mdl-card__media ul,
+.mdl-card__media ol,
+.mdl-card__media .numbers-summary {
+  padding-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px; }
+
+.mdl-card__media .numbers-summary {
+  display: table;
+  width: 100%;
+  table-layout: fixed; }
+
+.mdl-card__media .repository-lang-stats {
+  position: relative; }
+
+.mdl-card__media .repository-lang-stats ol.repository-lang-stats-numbers li {
+  display: table-cell;
+  width: 1%;
+  padding: 10px 5px;
+  text-align: center;
+  white-space: nowrap;
+  border-bottom: 0; }
+
+.mdl-card__media a {
+  background-color: transparent;
+  text-decoration: none;
+  -webkit-text-decoration-skip: objects; }
+
+.mdl-card__media .repository-lang-stats ol.repository-lang-stats-numbers li > a,
+.mdl-card__media .repository-lang-stats ol.repository-lang-stats-numbers li > span {
+  font-weight: bold;
+  color: #999;
+  text-decoration: none;
+  font-size: 11px; }
+
+.mdl-card__media .repository-lang-stats ol.repository-lang-stats-numbers li .language-color {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; }
+
+.mdl-card__media .repository-lang-stats ol.repository-lang-stats-numbers li .lang {
+  color: #333; }
+
+.mdl-card__media .repository-lang-stats ol.repository-lang-stats-numbers li span.percent {
+  float: none; }
+
+.mdl-card__media .numbers-summary li {
+  display: table-cell;
+  padding: 0;
+  text-align: center;
+  white-space: nowrap; }
+
+.mdl-card__media .numbers-summary a,
+.mdl-card__media .numbers-summary .nolink {
+  display: block;
+  padding: 10px 0;
+  color: #767676;
+  text-decoration: none; }
 
 .grad1 {
   background: #322e5c;
@@ -364,13 +469,10 @@ header {
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(to bottom right, #04423c, #078f82); }
 
-/* Tooltip container */
 .tooltip {
   position: relative;
-  display: inline-block;
-  /* If you want dots under the hoverable text */ }
+  display: inline-block; }
 
-/* Tooltip text */
 .tooltip .tooltip-text {
   visibility: hidden;
   -webkit-transform-origin: top center;
@@ -393,9 +495,9 @@ header {
   top: -10px;
   left: -50%; }
   .tooltip .tooltip-text.tooltip-icon {
-    top: -30px; }
+    top: 12.5px;
+    left: 100%; }
 
-/* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltip-text {
   visibility: visible;
   -webkit-animation: pulse 200ms cubic-bezier(0, 0, 0.2, 1) forwards;

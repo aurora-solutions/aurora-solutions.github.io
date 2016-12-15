@@ -1,5 +1,5 @@
 angular.module('showcase', [])
-    .controller('homeController', function($scope, $http, $q, $window) {
+    .controller('homeController', function($scope, $http, $q, $window, Utilities) {
 
         // Variables
         var organizations = [];
@@ -8,14 +8,14 @@ angular.module('showcase', [])
         $scope.sortOrder = "";
         $scope.loading = true;
 
-
         // Client ID and Secret
         var client_id = '259040d36f1705356ca2',
             client_secret = '7fd53a577a524c39f917cf4d213171a9fdd17181';
 
+        Utilities.initialize();
+
         // Call to read local file repo links
-        $http
-            .get('repos.json')
+        $http.get('repos.json')
             .then(function(organizations) {
                 loadOrganizationsData(organizations.data);
                 loadRepositoriesData(organizations.data);
@@ -65,28 +65,39 @@ angular.module('showcase', [])
                 });
         }
 
+        var getLanguages = function(languages, limit) {
+            var keys = Object.keys(languages);
+            if (keys.length < 1) {
+                return [];
+            }
+
+            var languagesList = [],
+                sum = 0;
+
+            angular.forEach(keys, function(key, arrayIndex) {
+                sum += languages[key];
+            });
+
+            angular.forEach(keys, function(key, arrayIndex) {
+                if (arrayIndex < limit) {
+                    var lang = {
+                        name: key,
+                        data: languages[key],
+                        stats: ((languages[key] / sum) * 100).toFixed(2),
+                        color: Utilities.getGithubColor(key)
+                    };
+
+                    languagesList.push(lang);
+                } else {
+                    //ret['Other'] = ret['Other'] + languages[key];
+                }
+
+            });
+
+            return languagesList;
+        }
+
         $scope.OpenRepo = function(url) {
             $window.open(url, "_blank");
         };
-
     });
-
-function getLanguages(obj, limit) {
-    var keys = Object.keys(obj);
-    if (keys.length < 1) {
-        return [];
-    }
-
-    var ret = new Object,
-        count = 0;
-
-    angular.forEach(keys, function(key, arrayIndex) {
-        if (count >= limit) {
-            //ret['Other'] = ret['Other'] + obj[key];
-        } else {
-            ret[key] = obj[key];
-        }
-        count++;
-    });
-    return ret;
-}
