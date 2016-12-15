@@ -42,7 +42,7 @@ angular.module('showcase', [])
         var loadRepositoriesData = function(organizationsList) {
             return $q.all(organizationsList.map(function(org) {
                     return $http
-                        .get('https://api.github.com/users/' + org.name + '/repos?type=all&client_id=' + client_id + '&client_secret=' + client_secret)
+                        .get('https://api.github.com/users/' + org.name + '/repos?type=all&per_page=100&client_id=' + client_id + '&client_secret=' + client_secret)
                 }))
                 .then(function(results) {
                     results.forEach(function(organization, i) {
