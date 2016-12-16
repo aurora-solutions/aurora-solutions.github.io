@@ -89,12 +89,18 @@
         //*************************************/
         // CARDS
         //*************************************/
-        .repo-link {
-            text-decoration: none;
-        }
         .mdl-card__media {
-            padding: 16px 16px 0;
+            padding: 16px 16px 10px;
             background-color: white;
+            min-height: 50px;
+            .framework-list {
+                display: inline;
+                float: left;
+            }
+            .framework {
+                height: 30px;
+                padding-right: 5px;
+            }
         }
         .mdl-card__media.mdl-typography--text-right {
             padding-top: 0;
@@ -112,9 +118,8 @@
             word-break: break-all;
         }
         .mdl-card__supporting-text {
-            height: 75px;
+            height: 150px;
             p {
-                word-break: break-all;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
@@ -130,7 +135,6 @@
             background-color: rgb(247, 247, 247);
             padding: 0;
             box-sizing: border-box;
-            margin-top: 16px;
         }
         .metrics-list li {
             font-size: 13px;
@@ -151,6 +155,7 @@
                 flex-direction: column;
                 padding: 0;
                 width: 33%;
+                overflow: visible;
                 .mdl-list__item-primary-content {
                     outline: none;
                 }
@@ -160,4 +165,186 @@
             }
         }
     }
+    a.repo-link {
+        text-decoration: none;
+    }
+    .language {
+        display: inline-block;
+    }
+    .language-bar {
+        display: table;
+        width: 100.5%;
+    }
+    .repo-language-stats {
+        display: table;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid #ddd;
+        border-top: 0;
+        line-height: 14px;
+        .language-info {
+            display: table-cell;
+            line-height: 8px;
+            text-indent: -9999px;
+            background-color: #ccc;
+            width: 0%;
+        }
+    }
+}
+
+.mdl-card__media {
+    .stats-switcher-viewport {
+        height: 41px;
+        overflow: hidden;
+    }
+    .stats-switcher-viewport .stats-switcher-wrapper {
+        position: relative;
+        -webkit-transition: top 0.25s ease-in-out;
+        transition: top 0.25s ease-in-out;
+        top: -41px;
+    }
+    .stats-switcher-viewport .stats-switcher-wrapper.show-languages {
+        top: 0;
+    }
+    .overall-summary {
+        position: relative;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+    .overall-summary-bottomless {
+        margin-bottom: 0px;
+        border-bottom: 0;
+        border-radius: 3px 3px 0 0;
+    }
+    .container {
+        width: 980px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .container::before {
+        display: table;
+        content: "";
+    }
+    .container::after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+    ul,
+    ol,
+    .numbers-summary {
+        padding-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .numbers-summary {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+    .repository-lang-stats {
+        position: relative;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li {
+        display: table-cell;
+        width: 1%;
+        padding: 10px 5px;
+        text-align: center;
+        white-space: nowrap;
+        border-bottom: 0;
+    }
+    a {
+        background-color: transparent;
+        text-decoration: none;
+        -webkit-text-decoration-skip: objects;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li>a,
+    .repository-lang-stats ol.repository-lang-stats-numbers li>span {
+        font-weight: bold;
+        color: #999;
+        text-decoration: none;
+        font-size: 11px;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li .language-color {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li .lang {
+        color: #333;
+    }
+    .repository-lang-stats ol.repository-lang-stats-numbers li span.percent {
+        float: none;
+    }
+    .numbers-summary li {
+        display: table-cell;
+        padding: 0;
+        text-align: center;
+        white-space: nowrap;
+    }
+    .numbers-summary a,
+    .numbers-summary .nolink {
+        display: block;
+        padding: 10px 0;
+        color: #767676;
+        text-decoration: none;
+    }
+}
+
+.grad1 {
+    @include gradient(#322e5c, #234c8d);
+}
+
+.grad2 {
+    @include gradient(#04423c, #078f82);
+}
+
+.grad3 {
+    @include gradient(#04423c, #078f82);
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+    z-index: 999;
+    background: rgba(97, 97, 97, .9);
+    background-color: #333;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 14px;
+    text-align: center;
+    max-width: 170px;
+    min-width: 80px;
+    width: auto;
+    border-radius: 2px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1000;
+    top: -10px;
+    left: -50%;
+    &.tooltip-icon {
+        top: 12.5px;
+        left: 100%;
+    }
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    -webkit-animation: pulse 200ms cubic-bezier(0, 0, .2, 1)forwards;
+    animation: pulse 200ms cubic-bezier(0, 0, .2, 1)forwards;
 }
