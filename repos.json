@@ -2,42 +2,42 @@
         "name": "aurora-solutions",
         "repos": [{
                 "name": "grails-spring-security-yubikey",
-                "frameworks": []
+                "frameworks": ["Grails","Spring","YubiKey"]
             },
             {
                 "name": "mail-service",
-                "frameworks": []
+                "frameworks": ["Spring"]
             }]
     },
     {
         "name": "stakater",
         "repos": [{
                 "name": "prod-deployment-reference",
-                "frameworks": []
+                "frameworks": ["AWS","Terraform"]
             },
             {
                 "name": "infrastructure-reference",
-                "frameworks": []
+                "frameworks": ["Terraform","Docker","GoCD","CoreOS","Consul"]
             },
             {
                 "name": "blueprint-utilities-aws",
-                "frameworks": ["aws", "terraform"]
+                "frameworks": ["AWS", "Terraform"]
             },
             {
                 "name": "blueprint-storage-aws",
-                "frameworks": ["aws", "terraform"]
+                "frameworks": ["AWS", "Terraform"]
             },
             {
                 "name": "blueprint-network-aws",
-                "frameworks": ["aws", "terraform", "shell-scripting"]
+                "frameworks": ["AWS", "Terraform", "Shell Scripts"]
             },
             {
                 "name": "blueprint-instance-pool-aws",
-                "frameworks": ["aws", "terraform"]
+                "frameworks": ["AWS", "Terraform"]
             },
             {
                 "name": "ami-baker",
-                "frameworks": ["packer", "shell-scripting"]
+                "frameworks": ["Packer", "Shell Scripts"]
             }
         ]
     },
@@ -45,23 +45,27 @@
         "name": "trade-nexus",
         "repos": [{
                 "name": "tradesharp-core",
-                "frameworks": []
+                "frameworks": [" .NET Framework"]
             },
             {
                 "name": "tradesharp-ui",
-                "frameworks": []
+                "frameworks": [" .NET Framework"]
             },
             {
                 "name": "tradesharp-forexware-connector",
-                "frameworks": []
+                "frameworks": [" .NET Framework"]
             },
             {
                 "name": "tradesharp-blackwood-connector",
-                "frameworks": []
+                "frameworks": [" .NET Framework"]
+            },
+            {
+                "name": "tradesharp-iqfeed-connector",
+                "frameworks": [" .NET Framework"]
             },
             {
                 "name": "trade-mirror",
-                "frameworks": []
+                "frameworks": [" .NET Framework","MetaTrader"]
             }
         ]
     },
@@ -69,15 +73,15 @@
         "name": "coin-worx",
         "repos": [{
                 "name": "ether-wallet",
-                "frameworks": ["ethereum", "meteorjs", "jquery", "angular2", "mongodb", "blockchain"]
+                "frameworks": ["Ethereum", "Meteor", "jQuery", "Angular2", "MongoDB", "Blockchain"]
             },
             {
                 "name": "coin-exchange-backend",
-                "frameworks": []
+                "frameworks": [" .NET Framework","Bitcoin","Litecoin"]
             },
             {
                 "name": "coin-exchange-frontend",
-                "frameworks": []
+                "frameworks": ["Grails","AngularJS","Highcharts","jQuery"]
             }
         ]
     },
