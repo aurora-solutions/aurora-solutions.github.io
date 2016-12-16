@@ -123,7 +123,7 @@
                                             <div class="stats-switcher-viewport">
                                                 <div class="stats-switcher-wrapper" ng-class="{'show-languages':showLang}">
                                                     <div class="numbers-summary">
-                                                        <div class="commits" ng-repeat="framework in repo.frameworks | limitTo : 4 track by $index">
+                                                        <div class="commits" ng-repeat="framework in repo.frameworks | limitTo : 5 track by $index">
                                                             <a class="framework-list tooltip">
                                                                 <img class="framework" ng-src="assets/img/languages/{{framework}}.png" alt="{{framework}}">
                                                                 <div class="tooltip-text tooltip-icon">
@@ -134,7 +134,7 @@
                                                     </div>
                                                     <div class="repository-lang-stats">
                                                         <ol class="repository-lang-stats-numbers">
-                                                            <li ng-repeat="lang in repo.languages">
+                                                            <li ng-repeat="lang in repo.languages | limitTo : 3">
                                                                 <a>
                                                                     <span class="color-block language-color" style="background-color:{{lang.color}}"></span>
                                                                     <span class="lang">{{lang.name}}</span>

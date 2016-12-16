@@ -52,7 +52,7 @@ angular.module('showcase', [])
                                 if (repository.name.toLowerCase() == repo.name.toLowerCase()) {
                                     var url = 'https://api.github.com/repos/' + repo.owner.login + '/' + repo.name + '/languages?type=all&client_id=' + client_id + '&client_secret=' + client_secret;
                                     $http.get(url).then(function(languages) {
-                                        repo.languages = getLanguages(languages.data, 3);
+                                        repo.languages = getLanguages(languages.data);
                                     });
                                     repo.frameworks = repository.frameworks;
                                     $scope.repos = $scope.repos.concat(repo);
@@ -65,7 +65,7 @@ angular.module('showcase', [])
                 });
         }
 
-        var getLanguages = function(languages, limit) {
+        var getLanguages = function(languages) {
             var keys = Object.keys(languages);
             if (keys.length < 1) {
                 return [];
@@ -79,18 +79,14 @@ angular.module('showcase', [])
             });
 
             angular.forEach(keys, function(key, arrayIndex) {
-                if (arrayIndex < limit) {
-                    var lang = {
-                        name: key,
-                        data: languages[key],
-                        stats: ((languages[key] / sum) * 100).toFixed(2),
-                        color: Utilities.getGithubColor(key)
-                    };
+                var lang = {
+                    name: key,
+                    data: languages[key],
+                    stats: ((languages[key] / sum) * 100).toFixed(1),
+                    color: Utilities.getGithubColor(key)
+                };
 
-                    languagesList.push(lang);
-                } else {
-                    //ret['Other'] = ret['Other'] + languages[key];
-                }
+                languagesList.push(lang);
 
             });
 
