@@ -1,9 +1,13 @@
 [{
         "name": "aurora-solutions",
         "repos": [{
-            "name": "grails-spring-security-yubikey",
-            "frameworks": []
-        }]
+                "name": "grails-spring-security-yubikey",
+                "frameworks": []
+            },
+            {
+                "name": "mail-service",
+                "frameworks": []
+            }]
     },
     {
         "name": "stakater",
