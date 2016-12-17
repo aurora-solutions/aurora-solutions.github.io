@@ -69,20 +69,17 @@
                         <div class="header-content mdl-color--white mdl-shadow--1dp content mdl-typography--text-center mdl-color-text--grey-800">
                             <h4 class="title-light">Our contribution to the open source community</h4>
                             <p>
-                                We believe <b>open source software is a great way to share software with the community</b>.
-                                It brings great benefit for others to learn, to build upon the creator's work,
-                                to make it better, to use it in ways the creator may not have thought of, <b>to continue
+                                We believe <b>open source software is a great way to share software with the community</b>. It brings great benefit for others to learn, to build upon the creator's work, to make it better, to use it in ways the creator
+                                may not have thought of, <b>to continue
                                 the wave of software driven progress</b> for clients and customers, and <b>ultimately make
                                 this world an even better place</b>. It is with the same spirit that <b>we at Aurora Solutions
-                                contribute to the Open Source world</b> with our own software. It is greatly important
-                                to us to become valuable members of the global software community, <b>and give back
+                                contribute to the Open Source world</b> with our own software. It is greatly important to us to become valuable members of the global software community, <b>and give back
                                 as much as we can</b>.
                             </p>
                         </div>
                         <!--REPOS-->
                         <div id="repos">
                             <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast"> Repositories</div>
-
                             <!--<p class="mdl-typography--font-light">
                                 All of our open source repositories that our developers have worked on and are ready to be shared with rest of community
                             </p>-->
@@ -131,6 +128,14 @@
                                                                 <img class="framework" ng-src="assets/img/languages/{{framework}}.png" alt="{{framework}}">
                                                                 <div class="tooltip-text tooltip-icon">
                                                                     {{framework}}
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="commits">
+                                                            <a class="framework-list tooltip-other" ng-if="repo.frameworks.other">
+                                                                <img class="framework" ng-src="assets/img/languages/more.png" alt="{{repo.frameworks.other}">
+                                                                <div class="tooltip-multi-text">
+                                                                    <span ng-repeat="otherFrameworks in repo.frameworks.other">{{otherFrameworks}}  <br></span>
                                                                 </div>
                                                             </a>
                                                         </div>
@@ -236,7 +241,6 @@
         <script src="assets/libs/jquery/jquery.easing.min.js"></script>
         <script src="assets/libs/jquery/jquery.smooth-scroll.js"></script>
         <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-        <script src="assets/libs/rcolor.js"></script>
         <script src="assets/js/events.js"></script>
         <script src="assets/js/app.js"></script>
         <script src="assets/js/utils.js"></script>

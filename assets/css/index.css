@@ -469,11 +469,13 @@ header {
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(to bottom right, #04423c, #078f82); }
 
-.tooltip {
+.tooltip,
+.tooltip-other {
   position: relative;
   display: inline-block; }
 
-.tooltip .tooltip-text {
+.tooltip .tooltip-text,
+.tooltip-other .tooltip-multi-text {
   visibility: hidden;
   -webkit-transform-origin: top center;
   transform-origin: top center;
@@ -494,9 +496,13 @@ header {
   z-index: 1000;
   top: -10px;
   left: -50%; }
-  .tooltip .tooltip-text.tooltip-icon {
+  .tooltip .tooltip-text.tooltip-icon,
+  .tooltip-other .tooltip-multi-text.tooltip-icon {
     top: 12.5px;
     left: 100%; }
+
+.tooltip-other .tooltip-multi-text {
+  position: fixed !important; }
 
 .tooltip:hover .tooltip-text {
   visibility: visible;

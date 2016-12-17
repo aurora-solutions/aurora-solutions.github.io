@@ -311,12 +311,14 @@
     @include gradient(#04423c, #078f82);
 }
 
-.tooltip {
+.tooltip,
+.tooltip-other {
     position: relative;
     display: inline-block;
 }
 
-.tooltip .tooltip-text {
+.tooltip .tooltip-text,
+.tooltip-other .tooltip-multi-text {
     visibility: hidden;
     -webkit-transform-origin: top center;
     transform-origin: top center;
@@ -341,6 +343,10 @@
         top: 12.5px;
         left: 100%;
     }
+}
+
+.tooltip-other .tooltip-multi-text {
+    position: fixed !important;
 }
 
 .tooltip:hover .tooltip-text {

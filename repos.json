@@ -2,22 +2,23 @@
         "name": "aurora-solutions",
         "repos": [{
                 "name": "grails-spring-security-yubikey",
-                "frameworks": ["Grails","Spring","YubiKey"]
+                "frameworks": ["Grails", "Spring", "YubiKey"]
             },
             {
                 "name": "mail-service",
                 "frameworks": ["Spring"]
-            }]
+            }
+        ]
     },
     {
         "name": "stakater",
         "repos": [{
                 "name": "prod-deployment-reference",
-                "frameworks": ["AWS","Terraform"]
+                "frameworks": ["AWS", "Terraform"]
             },
             {
                 "name": "infrastructure-reference",
-                "frameworks": ["Terraform","Docker","GoCD","CoreOS","Consul"]
+                "frameworks": ["Terraform", "Docker", "GoCD", "CoreOS", "Consul"]
             },
             {
                 "name": "blueprint-utilities-aws",
@@ -65,7 +66,7 @@
             },
             {
                 "name": "trade-mirror",
-                "frameworks": [" .NET Framework","MetaTrader"]
+                "frameworks": [" .NET Framework", "MetaTrader"]
             }
         ]
     },
@@ -77,11 +78,11 @@
             },
             {
                 "name": "coin-exchange-backend",
-                "frameworks": [" .NET Framework","Bitcoin","Litecoin"]
+                "frameworks": [" .NET Framework", "Bitcoin", "Litecoin"]
             },
             {
                 "name": "coin-exchange-frontend",
-                "frameworks": ["Grails","AngularJS","Highcharts","jQuery"]
+                "frameworks": ["Grails", "AngularJS", "Highcharts", "jQuery"]
             }
         ]
     },

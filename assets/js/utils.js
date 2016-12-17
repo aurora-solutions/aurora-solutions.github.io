@@ -4,10 +4,6 @@ angular.module('showcase')
         var githubColors;
 
         return {
-            getRandomColor: function() {
-                var color = new RColor;
-                return color.get(true, 0.5, 0.99);
-            },
             initialize: function() {
                 $http.get('github-colors.json')
                     .then(function(colors) {
