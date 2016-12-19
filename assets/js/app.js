@@ -55,12 +55,7 @@ angular.module('showcase', [])
                                         repo.languages = getLanguages(languages.data);
                                     });
                                     repo.frameworks = repository.frameworks;
-
-                                    if (repository.frameworks.length > 5) {
-                                        var other = [];
-                                        other = repository.frameworks.splice(5);
-                                        repository.frameworks.other = other;
-                                    }
+                                    repo.otherframeworks = repository.otherframeworks;
 
                                     $scope.repos = $scope.repos.concat(repo);
                                 }
