@@ -132,9 +132,9 @@
                                                             </a>
                                                         </div>
                                                         <div class="commits">
-                                                            <a class="framework-list tooltip-other" ng-if="repo.otherframeworks.length>0">
-                                                                <img class="framework" ng-src="assets/img/languages/more.png">
-                                                                <div class="tooltip-multi-text">
+                                                            <a class="framework-list tooltip" ng-if="repo.otherframeworks.length>0">
+                                                                <img class="framework" ng-src="assets/img/languages/more.png" alt="{{repo.otherframeworks}">
+                                                                <div class="tooltip-text tooltip-icon">
                                                                     <span ng-repeat="otherFramework in repo.otherframeworks">{{otherFramework}} <br></span>
                                                                 </div>
                                                             </a>
