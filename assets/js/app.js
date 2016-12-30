@@ -98,4 +98,23 @@ angular.module('showcase', [])
         $scope.OpenRepo = function(url) {
             $window.open(url, "_blank");
         };
-    });
+    })
+    .directive('mouseEvent', function() {
+        return {
+            restrict: 'A',
+            link: function(scope, elem, attrs) {
+                var tooltipMultiText = $(elem).children('.tooltip-multi-text');
+                $(elem).mouseover(function(event) {
+
+                    var left = ($(this).offset().left - 20) + 'px';
+                    var top = ($(this).offset().top - tooltipMultiText.height() - 20) + 'px';
+                    tooltipMultiText.css({ visibility: 'visible', top: top, left: left });
+                });
+
+                $(elem).mouseout(function() {
+                    tooltipMultiText.css({ visibility: 'hidden' });
+                });
+
+            }
+        };
+    });;
