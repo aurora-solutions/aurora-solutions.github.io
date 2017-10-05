@@ -80,8 +80,8 @@
             },
             {
                 "name": "trade-mirror",
-                "frameworks": [" .NET Framework", "MetaTrader"],
-                "otherframeworks": ["C#","C++","WPF","WCF","NUnit"]
+                "frameworks": [" .NET Framework", "MetaTrader","MySQL"],
+                "otherframeworks": ["C#","C++","WPF","WCF","NUnit","Sockets"]
             }
         ]
     },
