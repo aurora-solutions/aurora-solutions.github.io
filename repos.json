@@ -9,6 +9,11 @@
                 "name": "mail-service",
                 "frameworks": ["Spring Boot","Thymeleaf"],
                 "otherframeworks": ["Flying Saucer","Logback","Mockito","JUnit","Wiser"]
+            },
+            {
+                "name": "assertions-java-lib",
+                "frameworks": [],
+                "otherframeworks": ["Java","AssertJ"]
             }
         ]
     },
