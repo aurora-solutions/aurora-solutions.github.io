@@ -20,6 +20,10 @@
     {
         "name": "stakater",
         "repos": [{
+                "name": "IngressMonitorController",
+                "frameworks": [],
+                "otherframeworks": ["Kubernetes","UptimeRobot","Go"]
+            },{
                 "name": "prod-deployment-reference",
                 "frameworks": ["AWS", "Terraform"],
                 "otherframeworks": []
