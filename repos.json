@@ -21,7 +21,7 @@
         "name": "stakater",
         "repos": [{
                 "name": "IngressMonitorController",
-                "frameworks": [],
+                "frameworks": ["kubernetes", "ingress"],
                 "otherframeworks": ["Kubernetes","UptimeRobot","Go"]
             },
             {
