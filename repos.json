@@ -51,4 +51,67 @@
                 "otherframeworks": ["Kubernetes","UptimeRobot","Go"]
             },
             {
-                "name": "F
+-                "name": "Forecastle",
+-                "frameworks": ["kubernetes", "openshift"],
+-                "otherframeworks": []
+-            }
+-        ]
+-    },
+-    {
+-        "name": "trade-nexus",
+-        "repos": [{
+-                "name": "tradesharp-core",
+-                "frameworks": [" .NET Framework"],
+-                "otherframeworks": ["AForge.Net","NUnit","QuickFix.Net"]
+-            },
+-            {
+-                "name": "tradesharp-ui",
+-                "frameworks": [" .NET Framework"],
+-                "otherframeworks": ["AForge.NET","NUnit","WPF","Prism"]
+-            },
+-            {
+-                "name": "tradesharp-forexware-connector",
+-                "frameworks": [" .NET Framework"],
+-                "otherframeworks": ["NUnit","QuickFix.Net"]
+-            },
+-            {
+-                "name": "tradesharp-blackwood-connector",
+-                "frameworks": [" .NET Framework"],
+-                "otherframeworks": ["NUnit"]
+-            },
+-            {
+-                "name": "tradesharp-iqfeed-connector",
+-                "frameworks": [" .NET Framework"],
+-                "otherframeworks": ["NUnit"]
+-            },
+-            {
+-                "name": "trade-mirror",
+-                "frameworks": [" .NET Framework", "MetaTrader"],
+-                "otherframeworks": ["C#","C++","WPF","WCF","NUnit","Sockets"]
+-            }
+-        ]
+-    },
+-    {
+-        "name": "coin-worx",
+-        "repos": [{
+-                "name": "ether-wallet",
+-                "frameworks": ["Ethereum", "Meteor", "jQuery", "Angular2", "MongoDB"],
+-                "otherframeworks": ["Blockchain"]
+-            },
+-            {
+-                "name": "coin-exchange-backend",
+-                "frameworks": [" .NET Framework", "Bitcoin", "Litecoin"],
+-                "otherframeworks": ["NUnit"]
+-            },
+-            {
+-                "name": "coin-exchange-frontend",
+-                "frameworks": ["Grails", "AngularJS", "Highcharts", "jQuery"],
+-                "otherframeworks": ["Spock","Selenium","Geb","Jasmine","Karma","Protractor","Istanbul","Grunt","Yeoman"]
+-            }
+-        ]
+-    },
+-    {
+-        "name": "rpdstartup",
+-        "repos": []
+-    }
+-]
