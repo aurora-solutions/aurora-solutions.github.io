@@ -19,7 +19,11 @@
     },
     {
         "name": "stakater",
-        "repos": [
+        "repos": [{
+                "name": "IngressMonitorController",
+                "frameworks": [],
+                "otherframeworks": ["Kubernetes","UptimeRobot","Go"]
+            },
             {
                 "name": "prod-deployment-reference",
                 "frameworks": ["AWS", "Terraform"],
@@ -36,23 +40,23 @@
                 "otherframeworks": []
             },
             {
+                "name": "blueprint-storage-aws",
+                "frameworks": ["AWS", "Terraform"],
+                "otherframeworks": []
+            },
+            {
                 "name": "blueprint-network-aws",
                 "frameworks": ["AWS", "Terraform", "Shell Scripts"],
                 "otherframeworks": []
             },
             {
-                "name": "ami-baker",
-                "frameworks": ["Packer", "Shell Scripts"],
+                "name": "blueprint-instance-pool-aws",
+                "frameworks": ["AWS", "Terraform"],
                 "otherframeworks": []
             },
             {
-                "name": "IngressMonitorController",
-                "frameworks": ["kubernetes", "ingress"],
-                "otherframeworks": ["Kubernetes","UptimeRobot","Go"]
-            },
-            {
-                "name": "Forecastle",
-                "frameworks": ["kubernetes", "openshift"],
+                "name": "ami-baker",
+                "frameworks": ["Packer", "Shell Scripts"],
                 "otherframeworks": []
             }
         ]
