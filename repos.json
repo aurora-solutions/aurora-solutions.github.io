@@ -19,11 +19,7 @@
     },
     {
         "name": "stakater",
-        "repos": [{
-                "name": "IngressMonitorController",
-                "frameworks": ["kubernetes", "ingress"],
-                "otherframeworks": ["Kubernetes","UptimeRobot","Go"]
-            },
+        "repos": [
             {
                 "name": "prod-deployment-reference",
                 "frameworks": ["AWS", "Terraform"],
@@ -57,6 +53,16 @@
             {
                 "name": "ami-baker",
                 "frameworks": ["Packer", "Shell Scripts"],
+                "otherframeworks": []
+            },
+            {
+                "name": "IngressMonitorController",
+                "frameworks": ["kubernetes", "ingress"],
+                "otherframeworks": ["Kubernetes","UptimeRobot","Go"]
+            },
+            {
+                "name": "Forecastle",
+                "frameworks": ["kubernetes", "openshift"],
                 "otherframeworks": []
             }
         ]
