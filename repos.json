@@ -21,7 +21,7 @@
         "name": "stakater",
         "repos": [{
                 "name": "IngressMonitorController",
-                "frameworks": [],
+                "frameworks": ["Kubernetes"],
                 "otherframeworks": ["Kubernetes","UptimeRobot","Go"]
             },
             {
@@ -40,18 +40,8 @@
                 "otherframeworks": []
             },
             {
-                "name": "blueprint-storage-aws",
-                "frameworks": ["AWS", "Terraform"],
-                "otherframeworks": []
-            },
-            {
                 "name": "blueprint-network-aws",
                 "frameworks": ["AWS", "Terraform", "Shell Scripts"],
-                "otherframeworks": []
-            },
-            {
-                "name": "blueprint-instance-pool-aws",
-                "frameworks": ["AWS", "Terraform"],
                 "otherframeworks": []
             },
             {
